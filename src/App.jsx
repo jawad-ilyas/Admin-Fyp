@@ -11,11 +11,12 @@ const App = () => {
   // Define the routes that will use the custom header
   const customHeaderRoutes = [
     '/dashboard',
+    '/admin/questions',
     '/courses/:courseId',
     '/profile',
     '/questionsdashboard',
     '/addquestion',
-    '/question/:id',
+    '/question/*',
     '/teacherdashboard',
     '/teachers/:teacherId',
     '/courses/:courseId/enrolled-students',

@@ -52,12 +52,12 @@ const TeacherManagement = () => {
         navigate(-1);
     };
     return (
-        <div className="container pt-24 mx-auto p-4">
+        <div className=" bg-gray-700 pt-24 mx-auto p-4">
             {/* Filter UI */}
             <div className="  flex
         items-center
         justify-between
-        bg-white
+        bg-gray-900
         shadow-sm
         rounded-lg
         px-4
@@ -97,7 +97,7 @@ const TeacherManagement = () => {
                 </div>
             </div>
 
-            <h1 className="text-2xl font-semibold mb-4 pt-4">Find a Teacher</h1>
+            <h1 className="text-2xl font-semibold text-white mb-4 pt-4">Find a Teacher</h1>
 
             {/* Loading/Error states */}
             {loading && <p>Loading teachers...</p>}
@@ -112,7 +112,8 @@ const TeacherManagement = () => {
                             className="
                 relative
                 group
-                bg-white
+                bg-gray-900
+                text-white
                 rounded-xl
                 shadow-lg
                 overflow-hidden
@@ -151,7 +152,7 @@ const TeacherManagement = () => {
 
                             {/* CONTENT SECTION */}
                             <div className="p-4 space-y-2 pointer-events-none">
-                                <h3 className="text-xl font-bold text-gray-800">
+                                <h3 className="text-xl font-bold text-white">
                                     {teacher.name}
                                 </h3>
                                 {/* Rating */}
@@ -163,12 +164,12 @@ const TeacherManagement = () => {
                                     </div>
                                 )}
                                 {/* Location */}
-                                <p className="text-sm text-gray-600">
+                                <p className="text-sm text-white">
                                     {teacher.location || "Location not specified"}
                                 </p>
                                 {/* Bio */}
                                 {teacher.bio && (
-                                    <p className="text-sm text-gray-700 line-clamp-2">
+                                    <p className="text-sm text-white line-clamp-2">
                                         {teacher.bio}
                                     </p>
                                 )}
@@ -178,8 +179,8 @@ const TeacherManagement = () => {
                                         <span
                                             key={subject}
                                             className="
-                        bg-gray-100
-                        text-gray-700
+                        bg-white
+                        text-white
                         text-xs
                         px-2
                         py-1

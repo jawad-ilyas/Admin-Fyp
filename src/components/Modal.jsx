@@ -89,10 +89,10 @@ const Modal = ({ isVisible, onClose, initialValues = null }) => {
 
     return (
         <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50 space-x-0!important">
-            <div className="bg-white p-6 rounded-xl shadow-xl w-full max-w-2xl relative ">
+            <div className="bg-gray-700 p-6 rounded-xl shadow-xl w-full max-w-2xl relative ">
                 {/* Header */}
                 <div className="flex justify-between items-center mb-6">
-                    <h3 className="text-xl font-bold text-gray-800">
+                    <h3 className="text-xl font-bold text-white">
                         {initialValues ? "Update Course" : "Add New Course"}
                     </h3>
                     <button
@@ -114,7 +114,7 @@ const Modal = ({ isVisible, onClose, initialValues = null }) => {
                                 className="w-24 h-24 rounded-full object-cover border"
                             />
                         ) : (
-                            <div className="w-24 h-24 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
+                            <div className="w-24 h-24 rounded-full bg-gray-300 flex items-center justify-center text-gray-400">
                                 No Image
                             </div>
                         )}
@@ -133,7 +133,7 @@ const Modal = ({ isVisible, onClose, initialValues = null }) => {
                 <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
                     {/* Course Image */}
                     <div className="mb-4">
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                        <label className="block text-sm font-medium text-white mb-1">
                             {`Course Image ${initialValues ? "(Optional)" : "(Required)"}`}
                         </label>
                         <input
@@ -143,7 +143,7 @@ const Modal = ({ isVisible, onClose, initialValues = null }) => {
                                 required: !initialValues && "Course image is required",
                             })}
                             onChange={handleImageChange}
-                            className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full border rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                         {errors.image && (
                             <p className="text-red-500 text-sm">{errors.image.message}</p>
@@ -159,7 +159,7 @@ const Modal = ({ isVisible, onClose, initialValues = null }) => {
                             type="text"
                             {...register("name", { required: "Course name is required" })}
                             placeholder="Enter course name"
-                            className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full border rounded-lg px-3 py-2 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                         {errors.name && (
                             <p className="text-red-500 text-sm">{errors.name.message}</p>
@@ -173,7 +173,7 @@ const Modal = ({ isVisible, onClose, initialValues = null }) => {
                         </label>
                         <select
                             {...register("category", { required: "Category is required" })}
-                            className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full border rounded-lg px-3 py-2 focus:outline-none bg-gray-700 text-white focus:ring-2 focus:ring-blue-500"
                         >
                             <option value="">Select Category</option>
                             <option value="Programming">Programming</option>
@@ -196,7 +196,7 @@ const Modal = ({ isVisible, onClose, initialValues = null }) => {
                                 required: "Description is required",
                             })}
                             placeholder="Enter course description"
-                            className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full border rounded-lg px-3 py-2 focus:outline-none bg-gray-700 text-white focus:ring-2 focus:ring-blue-500"
                         ></textarea>
                         {errors.description && (
                             <p className="text-red-500 text-sm">{errors.description.message}</p>
@@ -215,7 +215,7 @@ const Modal = ({ isVisible, onClose, initialValues = null }) => {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="px-4 py-2 bg-teal-600 text-white rounded-md hover:bg-teal-700 transition"
+                            className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-900 transition"
                         >
                             {loading
                                 ? initialValues

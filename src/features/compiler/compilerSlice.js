@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const runCode = createAsyncThunk(
     "compiler/runCode",
-    async ({ code, language, testCases }, { rejectWithValue }) => {
+    async ({ code, language, testCases, questionId }, { rejectWithValue }) => {
         try {
             const studentInfo = JSON.parse(localStorage.getItem("studentInfo"));
             const config = {
@@ -14,7 +14,7 @@ export const runCode = createAsyncThunk(
             // e.g. your new route uses a third-party judge or a new approach
             const response = await axios.post(
                 "http://localhost:5000/api/v1/compiler/run",
-                { code, language, testCases },
+                { code, language, testCases, questionId },
                 config
             );
             // The shape of response.data might now have e.g. { output, passCount, totalCount, compile_output, etc. }

@@ -15,6 +15,9 @@ function AdminQuestionDetail() {
     const { singleQuestion, loading, error } = useSelector(
         (state) => state.Question || {}
     );
+
+
+    console.log("single question detial on the admin question detail page ", singleQuestion);
     // 2) Compiler loading/error states
     const { runLoading } = useSelector((state) => state.compiler);
 
@@ -34,13 +37,13 @@ function AdminQuestionDetail() {
             const testCases = singleQuestion?.sampleTestCases || [];
 
             const resultAction = await dispatch(
-                runCode({ code, language, testCases })
+                runCode({ code, language, testCases, questionId: singleQuestion?._id })
             );
 
             if (runCode.fulfilled.match(resultAction)) {
                 const { output: runOutput, passCount, totalCount } =
                     resultAction.payload;
-                const combined = `Output:\n${runOutput}\nPassed ${passCount}/${totalCount} testcases`;
+                const combined = `Output:\nPassed ${passCount}/${totalCount} testcases`;
                 setOutput(combined);
             } else {
                 alert("Error running code.");
@@ -73,7 +76,7 @@ function AdminQuestionDetail() {
             </button>
 
             {/* Question Info */}
-            <h1 className="text-2xl font-bold text-green-400 mb-2">
+            <h1 className="text-2xl font-bold capitalize text-green-400 mb-2">
                 {singleQuestion.title}
             </h1>
             <p className="text-sm text-yellow-300">

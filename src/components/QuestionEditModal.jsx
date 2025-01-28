@@ -49,7 +49,7 @@ const QuestionEditModal = ({ isOpen, onClose, question }) => {
                 <h2 className="text-xl font-bold mb-4">Edit Question</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
-                        <label className="block mb-1 font-semibold">Title</label>
+                        <label className="block mb-1 font-semibold">Title </label>
                         <input
                             type="text"
                             name="title"

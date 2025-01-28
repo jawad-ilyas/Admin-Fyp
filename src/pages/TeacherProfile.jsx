@@ -95,105 +95,107 @@ const TeacherProfile = () => {
     if (!teacher) return <p>No teacher data found.</p>;
 
     return (
-        <div className="max-w-xl pt-20 mx-auto py-8">
-            {/* Page Container */}
-            <div className="bg-white p-6 rounded shadow-md">
+        <div className="bg-gray-700 h-screen">
+            <div className="max-w-xl   pt-40 mx-auto py-8">
+                {/* Page Container */}
+                <div className=" p-6 rounded shadow-2xl">
 
-                {/* Profile Picture Section */}
-                <div className="mb-6">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Profile picture
-                    </label>
-                    <div className="flex items-center space-x-4">
-                        <img
-                            src={avatar}
-                            alt="Avatar"
-                            className="w-16 h-16 rounded-full object-cover"
-                        />
+                    {/* Profile Picture Section */}
+                    <div className="mb-6">
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Profile picture
+                        </label>
+                        <div className="flex items-center space-x-4">
+                            <img
+                                src={avatar}
+                                alt="Avatar"
+                                className="w-16 h-16 rounded-full object-cover"
+                            />
 
-                        <div className="flex space-x-2">
-                            {/* Upload Picture */}
-                            <label className="w-10 h-10 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 transition">
-                                <FaEdit className="w-4 h-4" />
-                                <input
-                                    type="file"
-                                    onChange={handleImageUpload}
-                                    className="hidden"
-                                    accept="image/*"
-                                />
-                            </label>
+                            <div className="flex space-x-2">
+                                {/* Upload Picture */}
+                                <label className="w-10 h-10 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 transition">
+                                    <FaEdit className="w-4 h-4" />
+                                    <input
+                                        type="file"
+                                        onChange={handleImageUpload}
+                                        className="hidden"
+                                        accept="image/*"
+                                    />
+                                </label>
 
-                            {/* Delete Picture */}
-                            <button
-                                onClick={handleDeletePicture}
-                                className="w-10 h-10 flex items-center justify-center rounded-full bg-red-100 text-red-600 hover:bg-red-200 transition"
-                            >
-                                <FaTrash className="w-4 h-4" />
-                            </button>
+                                {/* Delete Picture */}
+                                <button
+                                    onClick={handleDeletePicture}
+                                    className="w-10 h-10 flex items-center justify-center rounded-full bg-red-100 text-red-600 hover:bg-red-200 transition"
+                                >
+                                    <FaTrash className="w-4 h-4" />
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                {/* Profile Name */}
-                <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Profile name
-                    </label>
-                    <input
-                        type="text"
-                        value={profileName}
-                        onChange={(e) => setProfileName(e.target.value)}
-                        className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                    />
-                </div>
-
-                {/* Username */}
-                <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Username
-                    </label>
-                    <div className="relative">
-                        <span className="absolute left-3 top-2 text-gray-400">@</span>
+                    {/* Profile Name */}
+                    <div className="mb-4">
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                            Profile name
+                        </label>
                         <input
                             type="text"
-                            value={username}
-                            readOnly
-                            className="pl-7 w-full border border-gray-300 rounded px-3 py-2 bg-gray-50 text-gray-500 focus:outline-none"
+                            value={profileName}
+                            onChange={(e) => setProfileName(e.target.value)}
+                            className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
                         />
                     </div>
-                    <p className="text-xs text-gray-400 mt-1">
-                        Available change in 25/04/2024
-                    </p>
-                </div>
 
-                {/* About Me Section */}
-                <div className="mb-6">
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                        About me
-                    </label>
-                    <textarea
-                        rows="3"
-                        value={about}
-                        onChange={(e) => setAbout(e.target.value)}
-                        className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                        placeholder="Discuss only on work hour..."
-                    ></textarea>
-                </div>
+                    {/* Username */}
+                    <div className="mb-4">
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                            Username
+                        </label>
+                        <div className="relative">
+                            <span className="absolute left-3 top-2 text-gray-400">@</span>
+                            <input
+                                type="text"
+                                value={username}
+                                readOnly
+                                className="pl-7 w-full border border-gray-300 rounded px-3 py-2 bg-gray-50 text-gray-500 focus:outline-none"
+                            />
+                        </div>
+                        <p className="text-xs text-gray-400 mt-1">
+                            Available change in 25/04/2024
+                        </p>
+                    </div>
 
-                {/* Action Buttons */}
-                <div className="flex justify-end items-center">
-                    <button
-                        onClick={handleBack}
-                        className="bg-gray-200 me-2 text-gray-700 px-4 py-2 rounded hover:bg-gray-300 transition"
-                    >
-                        &larr; Back
-                    </button>
-                    <button
-                        onClick={handleSaveChanges}
-                        className="px-4 py-2 bg-teal-600 text-white rounded hover:bg-teal-700 transition"
-                    >
-                        Save changes
-                    </button>
+                    {/* About Me Section */}
+                    <div className="mb-6">
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                            About me
+                        </label>
+                        <textarea
+                            rows="3"
+                            value={about}
+                            onChange={(e) => setAbout(e.target.value)}
+                            className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                            placeholder="Discuss only on work hour..."
+                        ></textarea>
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="flex justify-end items-center">
+                        <button
+                            onClick={handleBack}
+                            className="bg-gray-200 me-2 text-gray-700 px-4 py-2 rounded hover:bg-gray-300 transition"
+                        >
+                            &larr; Back
+                        </button>
+                        <button
+                            onClick={handleSaveChanges}
+                            className="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 transition"
+                        >
+                            Save changes
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
