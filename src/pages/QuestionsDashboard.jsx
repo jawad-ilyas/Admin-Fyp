@@ -116,7 +116,7 @@ const QuestionsDashboard = () => {
             </div>
 
             {/* FILTERS */}
-            <div className="px-6 py-4 border-b border-gray-700 bg-gray-800">
+            <div className="px-6 py-4 border-b border-gray-700 bg-grrey-800">
                 <div className="flex flex-wrap items-center gap-4">
                     {/* Difficulty Filters */}
                     <div className="flex items-center space-x-2">
