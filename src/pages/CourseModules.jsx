@@ -9,19 +9,19 @@ import {
 } from "../features/module/moduleSlice";
 import EditModuleModal from "../components/EditModuleModal";
 import {
-    FaPlus, // Add Question 
-    FaEye, // View Questions 
-    FaEdit, // Edit Module
-    FaTrash, // Delete Module
-    FaFileAlt // View Submissions
+    FaPlus,
+    FaEye,
+    FaEdit,
+    FaTrash,
+    FaFileAlt
 } from "react-icons/fa";
+
 const CourseModules = () => {
     const { courseId, teacherId } = useParams();
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-
-    const verifyId = userInfo?.data?._id; // Correct key for user ID
+    const verifyId = userInfo?.data?._id;
 
     // State from Redux
     const { modules, loading, error } = useSelector((state) => state.modules);
@@ -87,11 +87,11 @@ const CourseModules = () => {
     return (
         <div className="min-h-screen bg-gray-50">
             {/* HERO SECTION */}
-            <div className="relative bg-teal-600 text-white py-10 pt-28 px-6 sm:px-12 rounded-b-3xl shadow-md">
+            <div className="relative bg-gray-900 text-white py-10 pt-28 px-6 sm:px-12 rounded-b-3xl shadow-md">
                 {/* Back Button */}
                 <button
                     onClick={() => navigate(-1)}
-                    className="absolute top-20 left-8 bg-white text-teal-600 px-4 py-2 rounded-md shadow hover:bg-gray-100 transition"
+                    className="absolute top-20 left-8 bg-white text-gray-900 px-4 py-2 rounded-md shadow hover:bg-gray-100 transition"
                 >
                     Back
                 </button>
@@ -101,7 +101,7 @@ const CourseModules = () => {
                     <h1 className="text-xl pt-4 sm:text-2xl font-bold">
                         {course ? course.name : "Loading..."}
                     </h1>
-                    <p className="mt-2 text-sm sm:text-base text-teal-100">
+                    <p className="mt-2 text-sm sm:text-base text-gray-100">
                         {course ? course.description : "Loading..."}
                     </p>
                 </div>
@@ -123,7 +123,7 @@ const CourseModules = () => {
                         <div
                             key={module._id}
                             className="
-                                bg-white
+                                bg-gray-800
                                 rounded-lg
                                 shadow-sm
                                 p-5
@@ -133,12 +133,12 @@ const CourseModules = () => {
                             "
                         >
                             {/* Module Title */}
-                            <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                            <h3 className="text-lg font-semibold text-gray-200 mb-1">
                                 {module.title}
                             </h3>
 
                             {/* Description */}
-                            <p className="text-sm text-gray-600 mb-3">{module.description}</p>
+                            <p className="text-sm text-gray-400 mb-3">{module.description}</p>
 
                             {/* Times */}
                             <div className="text-xs text-gray-500 space-y-1 mb-4">
@@ -155,16 +155,16 @@ const CourseModules = () => {
                             {/* Action Buttons */}
                             <div className="flex items-center space-x-4">
                                 <button
-                                    onClick={() => goToAddQuestions(courseId, module?._id)}
-                                    className="flex items-center text-gray-600 hover:text-teal-600 text-sm"
+                                    onClick={() => goToAddQuestions(courseId, module._id)}
+                                    className="flex items-center text-gray-200 hover:text-gray-100 text-sm"
                                     title="Add Questions"
                                 >
                                     <FaPlus className="mr-1" />
                                     Add
                                 </button>
                                 <button
-                                    onClick={() => goToViewQuestions(courseId, module?._id)}
-                                    className="flex items-center text-gray-600 hover:text-teal-600 text-sm"
+                                    onClick={() => goToViewQuestions(courseId, module._id)}
+                                    className="flex items-center text-gray-200 hover:text-gray-100 text-sm"
                                     title="View Questions"
                                 >
                                     <FaEye className="mr-1" />
@@ -176,7 +176,7 @@ const CourseModules = () => {
                                     <>
                                         <button
                                             onClick={() => handleEdit(module)}
-                                            className="flex items-center text-gray-600 hover:text-teal-600 text-sm"
+                                            className="flex items-center text-gray-200 hover:text-gray-100 text-sm"
                                             title="Edit Module"
                                         >
                                             <FaEdit className="mr-1" />
@@ -184,7 +184,7 @@ const CourseModules = () => {
                                         </button>
                                         <button
                                             onClick={() => handleDelete(module._id)}
-                                            className="flex items-center text-gray-600 hover:text-red-600 text-sm"
+                                            className="flex items-center text-gray-200 hover:text-red-600 text-sm"
                                             title="Delete Module"
                                         >
                                             <FaTrash className="mr-1" />
@@ -197,7 +197,7 @@ const CourseModules = () => {
                                     onClick={() =>
                                         navigate(`/adminsubmissions/${module?.teacher}/${module?.course}/${module._id}`)
                                     }
-                                    className="flex items-center text-gray-600 hover:text-teal-600 text-sm"
+                                    className="flex items-center text-gray-200 hover:text-gray-100 text-sm"
                                     title="View Submissions"
                                 >
                                     <FaFileAlt className="mr-1" />
@@ -219,6 +219,5 @@ const CourseModules = () => {
         </div>
     );
 };
-
 
 export default CourseModules;
