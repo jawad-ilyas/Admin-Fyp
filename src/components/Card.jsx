@@ -66,21 +66,17 @@ const Card = ({
                   so they remain clickable.
             */
             className="
-        relative
-        group 
-        bg-white 
-        rounded-xl 
-        shadow-lg 
-        overflow-hidden 
-        transition 
-        hover:shadow-xl 
-        cursor-pointer 
-       
-      "
-        /* 
-           We’ll handle navigation by clicking on the “hover overlay” 
-           instead of the entire card. See the overlay below.
-        */
+                relative
+                group 
+                bg-gray-800 
+                rounded-xl 
+                shadow-lg 
+                overflow-hidden 
+                transition 
+                hover:shadow-xl 
+                cursor-pointer 
+                text-white
+            "
         >
             {/* IMAGE SECTION */}
             <div className="relative overflow-hidden h-48">
@@ -88,40 +84,40 @@ const Card = ({
                     src={image}
                     alt={title}
                     className="
-            w-full 
-            h-full 
-            object-cover 
-            transition-all 
-            duration-300 
-            group-hover:scale-105
-          "
+                        w-full 
+                        h-full 
+                        object-cover 
+                        transition-all 
+                        duration-300 
+                        group-hover:scale-105
+                    "
                 />
                 {/* 
-          Hover Overlay:
-          - Stretches across the entire card
-          - On hover, user sees that they can click
-          - We do pointer-events-auto so user can click on it
-        */}
+                    Hover Overlay:
+                    - Stretches across the entire card
+                    - On hover, user sees that they can click
+                    - We do pointer-events-auto so user can click on it
+                */}
                 <div
                     className="
-            absolute 
-            inset-0 
-            group-hover:bg-black/10 
-            transition-all 
-            duration-300
-            pointer-events-auto
-          "
+                        absolute 
+                        inset-0 
+                        group-hover:bg-black/10 
+                        transition-all 
+                        duration-300
+                        pointer-events-auto
+                    "
                     onClick={() => navigate(`/courses/${courseId}/teachers/${teacher?._id}`)}
                 ></div>
             </div>
 
             {/* CONTENT SECTION */}
             <div className="p-4 space-y-2 pointer-events-none">
-                <h3 className="text-xl font-bold text-gray-800">{title}</h3>
-                <p className="text-sm text-gray-600">Category: {category}</p>
-                <p className="text-sm text-gray-600">Teacher: {teacher?.name}</p>
+                <h3 className="text-xl font-bold">{title}</h3>
+                <p className="text-sm">Category: {category}</p>
+                <p className="text-sm">Teacher: {teacher?.name}</p>
                 {description && (
-                    <p className="text-sm text-gray-700">{description}</p>
+                    <p className="text-sm">{description}</p>
                 )}
             </div>
 
@@ -134,17 +130,17 @@ const Card = ({
                         onClick={() => setIsModuleModalVisible(true)}
                         title="Add Module"
                         className="
-              w-10 
-              h-10 
-              flex 
-              items-center 
-              justify-center 
-              rounded-full 
-              bg-green-100 
-              text-green-600 
-              hover:bg-green-200 
-              transition
-            "
+                            w-10 
+                            h-10 
+                            flex 
+                            items-center 
+                            justify-center 
+                            rounded-full 
+                            bg-green-600 
+                            text-white 
+                            hover:bg-green-500 
+                            transition
+                        "
                     >
                         <FaPlus className="w-4 h-4" />
                     </button>
@@ -154,17 +150,17 @@ const Card = ({
                         onClick={() => setIsAddStudentModalVisible(true)}
                         title="Add Student"
                         className="
-              w-10 
-              h-10 
-              flex 
-              items-center 
-              justify-center 
-              rounded-full 
-              bg-blue-100 
-              text-blue-600 
-              hover:bg-blue-200 
-              transition
-            "
+                            w-10 
+                            h-10 
+                            flex 
+                            items-center 
+                            justify-center 
+                            rounded-full 
+                            bg-blue-600 
+                            text-white 
+                            hover:bg-blue-500 
+                            transition
+                        "
                     >
                         <FaUserPlus className="w-4 h-4" />
                     </button>
@@ -174,17 +170,17 @@ const Card = ({
                         onClick={() => navigate(`/courses/${courseId}/enrolled-students`)}
                         title="Enrolled Students"
                         className="
-              w-10 
-              h-10 
-              flex 
-              items-center 
-              justify-center 
-              rounded-full 
-              bg-gray-100 
-              text-gray-600 
-              hover:bg-gray-200 
-              transition
-            "
+                            w-10 
+                            h-10 
+                            flex 
+                            items-center 
+                            justify-center 
+                            rounded-full 
+                            bg-gray-600 
+                            text-white 
+                            hover:bg-gray-500 
+                            transition
+                        "
                     >
                         <FaUsers className="w-4 h-4" />
                     </button>
@@ -197,17 +193,17 @@ const Card = ({
                         onClick={onEdit}
                         title="Edit Course"
                         className="
-              w-10 
-              h-10 
-              flex 
-              items-center 
-              justify-center 
-              rounded-full 
-              bg-blue-100 
-              text-blue-600 
-              hover:bg-blue-200 
-              transition
-            "
+                            w-10 
+                            h-10 
+                            flex 
+                            items-center 
+                            justify-center 
+                            rounded-full 
+                            bg-blue-600 
+                            text-white 
+                            hover:bg-blue-500 
+                            transition
+                        "
                     >
                         <FaEdit className="w-4 h-4" />
                     </button>
@@ -216,17 +212,17 @@ const Card = ({
                         onClick={onDelete}
                         title="Delete Course"
                         className="
-              w-10 
-              h-10 
-              flex 
-              items-center 
-              justify-center 
-              rounded-full 
-              bg-red-100 
-              text-red-600 
-              hover:bg-red-200 
-              transition
-            "
+                            w-10 
+                            h-10 
+                            flex 
+                            items-center 
+                            justify-center 
+                            rounded-full 
+                            bg-red-600 
+                            text-white 
+                            hover:bg-red-500 
+                            transition
+                        "
                     >
                         <FaTrash className="w-4 h-4" />
                     </button>
