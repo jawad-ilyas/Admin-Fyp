@@ -81,100 +81,103 @@ const SearchFilter = () => {
     };
 
     return (
-        <div className="flex items-center justify-between bg-white shadow-sm rounded-lg px-4 py-2 space-x-4">
-            <div className="flex items-center space-x-3">
-                <button
-                    title="Fetch All Courses"
-                    onClick={handleFetchAllCourses}
-                    className={`transition ${activeTab === "allCourses" ? "text-teal-600" : "text-gray-600 hover:text-teal-600"}`}
-                >
-                    <FaBars className="w-5 h-5" />
-                </button>
-                {(userRole === "admin" || userRole === "teacher") && (
+        <div className="bg-gray-800 p-6 rounded-lg shadow-md w-full ">
+            <h1 className="text-2xl font-bold text-center mb-4 text-green-400">Course Search and Filter</h1>
+            <div className="flex items-center justify-between bg-white shadow-sm rounded-lg px-4 py-2 space-x-4">
+                <div className="flex items-center space-x-3">
                     <button
-                        title="My Courses"
-                        onClick={handleFetchMyCourses}
-                        className={`transition ${activeTab === "myCourses" ? "text-teal-600" : "text-gray-600 hover:text-teal-600"}`}
+                        title="Fetch All Courses"
+                        onClick={handleFetchAllCourses}
+                        className={`transition ${activeTab === "allCourses" ? "text-teal-600" : "text-gray-600 hover:text-teal-600"}`}
                     >
-                        <FaUser className="w-5 h-5" />
+                        <FaBars className="w-5 h-5" />
                     </button>
-                )}
-                <div className="relative">
-                    <button
-                        onClick={() => setShowFilterMenu(!showFilterMenu)}
-                        title="Filter"
-                        className="text-gray-600 hover:text-teal-600 transition"
-                    >
-                        <FaFilter className="w-5 h-5" />
-                    </button>
-                    {showFilterMenu && (
-                        <div className="absolute top-8 left-0 bg-white p-4 shadow-md rounded-lg z-10 space-y-3 w-64">
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Category</label>
-                                <select
-                                    className="w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-teal-500"
-                                    value={selectedCategory}
-                                    onChange={(e) => setSelectedCategory(e.target.value)}
-                                >
-                                    <option value="">All Categories</option>
-                                    {categoriesLoading ? (
-                                        <option>Loading...</option>
-                                    ) : categoriesError ? (
-                                        <option>Error fetching categories</option>
-                                    ) : categories.map((cat) => (
-                                        <option key={cat} value={cat}>
-                                            {cat}
-                                        </option>
-                                    ))}
-                                </select>
-                            </div>
-                            {userRole === "admin" && (
+                    {(userRole === "admin" || userRole === "teacher") && (
+                        <button
+                            title="My Courses"
+                            onClick={handleFetchMyCourses}
+                            className={`transition ${activeTab === "myCourses" ? "text-teal-600" : "text-gray-600 hover:text-teal-600"}`}
+                        >
+                            <FaUser className="w-5 h-5" />
+                        </button>
+                    )}
+                    <div className="relative">
+                        <button
+                            onClick={() => setShowFilterMenu(!showFilterMenu)}
+                            title="Filter"
+                            className="text-gray-600 hover:text-teal-600 transition"
+                        >
+                            <FaFilter className="w-5 h-5" />
+                        </button>
+                        {showFilterMenu && (
+                            <div className="absolute top-8 left-0 bg-white p-4 shadow-md rounded-lg z-10 space-y-3 w-64">
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1">Teacher</label>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">Category</label>
                                     <select
                                         className="w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-teal-500"
-                                        value={selectedTeacherId}
-                                        onChange={(e) => setSelectedTeacherId(e.target.value)}
+                                        value={selectedCategory}
+                                        onChange={(e) => setSelectedCategory(e.target.value)}
                                     >
-                                        <option value="">All Teachers</option>
-                                        {teachers.length > 0
-                                            ? teachers.map((t) => (
-                                                <option key={t._id} value={t._id}>
-                                                    {t.name}
-                                                </option>
-                                            ))
-                                            : <option value="">No teachers found</option>}
+                                        <option value="">All Categories</option>
+                                        {categoriesLoading ? (
+                                            <option>Loading...</option>
+                                        ) : categoriesError ? (
+                                            <option>Error fetching categories</option>
+                                        ) : categories.map((cat) => (
+                                            <option key={cat} value={cat}>
+                                                {cat}
+                                            </option>
+                                        ))}
                                     </select>
                                 </div>
-                            )}
-                        </div>
-                    )}
+                                {userRole === "admin" && (
+                                    <div>
+                                        <label className="block text-sm font-medium text-gray-700 mb-1">Teacher</label>
+                                        <select
+                                            className="w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-teal-500"
+                                            value={selectedTeacherId}
+                                            onChange={(e) => setSelectedTeacherId(e.target.value)}
+                                        >
+                                            <option value="">All Teachers</option>
+                                            {teachers.length > 0
+                                                ? teachers.map((t) => (
+                                                    <option key={t._id} value={t._id}>
+                                                        {t.name}
+                                                    </option>
+                                                ))
+                                                : <option value="">No teachers found</option>}
+                                        </select>
+                                    </div>
+                                )}
+                            </div>
+                        )}
+                    </div>
+                    <button
+                        onClick={() => setShowModal(true)}
+                        title="Add Course"
+                        className="text-gray-600 hover:text-teal-600 transition"
+                    >
+                        <FaPlus className="w-5 h-5" />
+                    </button>
                 </div>
-                <button
-                    onClick={() => setShowModal(true)}
-                    title="Add Course"
-                    className="text-gray-600 hover:text-teal-600 transition"
-                >
-                    <FaPlus className="w-5 h-5" />
-                </button>
-            </div>
-            <div className="flex items-center space-x-2">
-                <div className="relative">
-                    <FaSearch
-                        onClick={handleSearch}
-                        title="Search"
-                        className="absolute left-2 top-2 text-gray-400 cursor-pointer"
-                    />
-                    <input
-                        type="text"
-                        placeholder="Search..."
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        className="pl-8 pr-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-teal-500 text-sm placeholder-gray-400"
-                    />
+                <div className="flex items-center space-x-2">
+                    <div className="relative">
+                        <FaSearch
+                            onClick={handleSearch}
+                            title="Search"
+                            className="absolute left-2 top-2 text-gray-400 cursor-pointer"
+                        />
+                        <input
+                            type="text"
+                            placeholder="Search..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            className="pl-8 pr-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-teal-500 text-sm placeholder-gray-400"
+                        />
+                    </div>
                 </div>
+                <Modal isVisible={showModal} onClose={() => setShowModal(false)} />
             </div>
-            <Modal isVisible={showModal} onClose={() => setShowModal(false)} />
         </div>
     );
 };
