@@ -4,7 +4,7 @@ import CardSection from "../components/CardSection";
 
 const Dashboard = () => {
     return (
-        <div className="h-screen ">
+        <div className="h-full ">
      
             <main className=" mx-auto h-full bg-gray-700 mt-4 py-20 px-4">
                 <SearchFilter />

@@ -90,7 +90,7 @@ const SearchFilter = () => {
                 >
                     <FaBars className="w-5 h-5" />
                 </button>
-                {(userRole === "admin" || userRole === "teacher") && (
+                {/* {(userRole === "admin" || userRole === "teacher") && (
                     <button
                         title="My Courses"
                         onClick={handleFetchMyCourses}
@@ -98,7 +98,7 @@ const SearchFilter = () => {
                     >
                         <FaUser className="w-5 h-5" />
                     </button>
-                )}
+                )} */}
                 <div className="relative">
                     <button
                         onClick={() => setShowFilterMenu(!showFilterMenu)}

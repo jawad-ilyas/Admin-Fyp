@@ -85,7 +85,7 @@ const Card = ({
                     alt={title}
                     className="
                         w-full 
-                        h-full 
+                        h-96 
                         object-cover 
                         transition-all 
                         duration-300 

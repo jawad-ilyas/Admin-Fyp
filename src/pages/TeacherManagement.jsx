@@ -243,7 +243,7 @@ const TeacherManagement = () => {
                     ))}
                 </div>
             ) : (
-                !loading && <p>No teachers found.</p>
+                !loading && <p className="text-white">No teachers found.</p>
             )}
 
             {/* Courses Modal */}
